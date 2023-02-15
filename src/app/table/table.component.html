@@ -1,0 +1,59 @@
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1">
+
+	<!-- Nome -->
+	<ng-container matColumnDef="name">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordina per nome">
+			Nome
+		</th>
+		<td mat-cell *matCellDef="let person"> {{person.name}} </td>
+	</ng-container>
+
+	<!-- Cognome -->
+	<ng-container matColumnDef="surname">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordina per cognome">
+			Cognome
+		</th>
+		<td mat-cell *matCellDef="let person"> {{person.surname}} </td>
+	</ng-container>
+
+	<!-- Genere -->
+	<ng-container matColumnDef="gender">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordina per sesso">
+			Sesso
+		</th>
+		<td mat-cell *matCellDef="let person"> {{person.gender}} </td>
+	</ng-container>
+
+	<!-- Data di nascita -->
+	<ng-container matColumnDef="birthDate">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordina per data di nascita">
+			Data di nascita
+		</th>
+		<td mat-cell *matCellDef="let person"> {{person.birthDate}} </td>
+	</ng-container>
+
+	<!-- Comune di nascita -->
+	<ng-container matColumnDef="birthPlace">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordina per comune di nascita">
+			Comune di nascita
+		</th>
+		<td mat-cell *matCellDef="let person"> {{person.birthPlace}} </td>
+	</ng-container>
+
+	<ng-container matColumnDef="fiscalCode">
+		<th mat-header-cell *matHeaderCellDef>
+			Codice fiscale
+		</th>
+		<td mat-cell *matCellDef="let person">
+			<button mat-raised-button color="primary" (click)="computeFiscalCode(person)">
+				Visualizza
+			</button>
+		</td>
+	</ng-container>
+
+	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+	<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+
+</table>

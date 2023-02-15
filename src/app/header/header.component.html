@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+	<div fxFlex fxLayout="row" fxLayoutAlign="start center">
+		<div fxLayout="row" fxLayoutAlign="center center">
+			<!-- <img id="angular-logo" alt="angular-logo"
+				src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"> -->
+			<mat-icon class="logo">people</mat-icon>
+			<span>Anagrafica</span>
+		</div>
+		<div fxFlex="55"></div>
+		<div fxFlex fxLayout="row" fxLayoutAlign="center center">
+			<button mat-raised-button color="accent" routerLink="inserimento">Inserimento</button>
+			<div fxFlex="10"></div>
+			<button mat-raised-button color="accent" routerLink="consultazione">Consultazione</button>
+		</div>
+		<div fxFlex="3"></div>
+		<div fxFlex="8" fxLayout="row" fxLayoutAlign="space-between center">
+				<mat-icon class="mr-8">brightness_5</mat-icon>
+				<mat-slide-toggle [checked]="isDarkMode | async" (change)="toggleDarkMode($event.checked)" class="mr-8"></mat-slide-toggle>
+				<mat-icon>bedtime</mat-icon>
+		</div>
+	</div>
+</mat-toolbar>

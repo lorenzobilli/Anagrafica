@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>{{data.header}}</h1>
+<div mat-dialog-content>
+	<ng-container *ngIf="data.header != 'Errore'; then showFiscalCode else showErrorMessage"></ng-container>
+	<ng-template #showFiscalCode>
+		<p id="fiscal-code">{{data.content}}</p>
+	</ng-template>
+	<ng-template #showErrorMessage>
+		<p>{{data.content}}</p>
+	</ng-template>
+</div>
+<div mat-dialog-actions>
+	<button *ngIf="data.header != 'Errore'" mat-raised-button color="accent" (click)="copyToClipboard()">Copia</button>
+	<button mat-raised-button mat-dialog-close color="warn">Chiudi</button>
+</div>

@@ -1,0 +1,76 @@
+<mat-stepper labelPosition="bottom" #stepper>
+	<!-- Nome, cognome -->
+	<mat-step [stepControl]="nameSurnameFormGroup">
+		<form [formGroup]="nameSurnameFormGroup">
+			<ng-template matStepLabel>Nome e cognome</ng-template>
+			<mat-form-field appearance="fill">
+				<mat-label>Nome</mat-label>
+				<input matInput formControlName="nameForm" required>
+			</mat-form-field>
+			<div style="margin-top: -20px"></div>
+			<mat-form-field appearance="fill">
+				<mat-label>Cognome</mat-label>
+				<input matInput formControlName="surnameForm" required>
+			</mat-form-field>
+			<div>
+				<button mat-raised-button color="accent" matStepperNext>Avanti</button>
+			</div>
+		</form>
+	</mat-step>
+	<!-- Sesso	 -->
+	<mat-step>
+		<form>
+			<ng-template matStepLabel>Sesso</ng-template>
+			<mat-label>Sesso</mat-label>
+			<div style="height: 5px"></div>
+			<mat-radio-group required>
+				<mat-radio-button value="M" (change) = "selectRadioButton($event)">Maschio</mat-radio-button>
+				<mat-radio-button value="F" (change) = "selectRadioButton($event)">Femmina</mat-radio-button>
+			</mat-radio-group>
+			<div style="height: 10px"></div>
+			<div>
+				<button mat-raised-button color="accent" matStepperPrevious>Indietro</button>
+				<button class="right-button" mat-raised-button color="accent" matStepperNext>Avanti</button>
+			</div>
+		</form>
+	</mat-step>
+	<!-- Data di nascita -->
+	<mat-step [stepControl]="birthDateFormGroup">
+		<form [formGroup]="birthDateFormGroup">
+			<ng-template matStepLabel>Data di nascita</ng-template>
+			<mat-form-field appearance="fill">
+				<mat-label>Data di nascita</mat-label>
+				<input matInput placeholder="MM/GG/AAAA" [matDatepicker]="picker" formControlName="birthDateForm">
+				<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+			<div>
+				<button mat-raised-button color="accent" matStepperPrevious>Indietro</button>
+				<button class="right-button" mat-raised-button color="accent" matStepperNext>Avanti</button>
+			</div>
+		</form>
+	</mat-step>
+	<!-- Comune di nascita -->
+	<mat-step [stepControl]="birthPlaceFormGroup">
+		<form [formGroup]="birthPlaceFormGroup">
+			<ng-template matStepLabel>Comune di nascita</ng-template>
+			<mat-form-field appearance="fill">
+				<mat-label>Comune</mat-label>
+				<input matInput formControlName="birthPlaceForm" placeholder="Roma">
+			</mat-form-field>
+			<div>
+				<button mat-raised-button color="accent" matStepperPrevious>Indietro</button>
+				<button class="right-button" mat-raised-button color="accent" matStepperNext>Avanti</button>
+			</div>
+		</form>
+	</mat-step>
+	<!-- Pagina finale -->
+	<mat-step>
+		<ng-template matStepLabel>Fine</ng-template>
+		<p>Fatto!</p>
+		<div>
+			<button mat-raised-button color="accent" matStepperPrevious>Indietro</button>
+			<button class="right-button" mat-raised-button color="accent" (click)="submit(); this.stepper.reset()">Salva</button>
+		</div>
+	</mat-step>
+</mat-stepper>
